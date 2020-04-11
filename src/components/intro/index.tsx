@@ -47,59 +47,31 @@ export class Intro extends React.Component<Props, State> {
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const backgroundColor = "#ddd";
-        const accentColor: string = "green";
-
-        const wrapperStyle = {
-            display: "block",
-            overflow: "hidden",
-            width: "100%",
-            height: "100vh",
-            background: backgroundColor,
-            textShadow: "1px 0 black, 0px 1px black, -1px 0 black, 0px -1px black", //, 1px 1px black, -1px -1px black"
-            fontSize: "45vh",
-            textAlign: "center",
-            transformOrigin: "center",
-            perspective: "1000px"
-        } as React.CSSProperties;
+        const accentColor: string = "#111921";
 
         const fnameStyle = {
-            transformOrigin: "inherit",
+            color: accentColor,
             transform: "translate3d(" + (-this.state.positionX + this.state.width/2)/16 + "px, " +
                 (-this.state.positionY + this.state.height*1.5)/16 + "px, 0)" +
                 "rotate3d(" + (-1*(this.state.positionY - this.state.height/2)/10)/(this.state.height/2) + ", "
                 + ((this.state.positionX - this.state.width/2)/10)/(this.state.width/2) +", 0,10deg)",
-            color: backgroundColor,
             zIndex: 2,
         };
 
         const lnameStyle = {
-            transformOrigin: "inherit",
+            color: accentColor,
             transform: "translate3d(" + (-this.state.positionX + this.state.width/2)/8 + "px, " +
                 (-this.state.positionY - this.state.height*2)/8 + "px, 0) " +
                 "rotate3d(" + (-1*(this.state.positionY - this.state.height/2)/10)/(this.state.height/2) + ", "
                 + ((this.state.positionX - this.state.width/2)/10)/(this.state.width/2) +", 0,10deg)",
-            color: backgroundColor,
             zIndex: 3,
         };
 
-        const overlay = {
-            zIndex: 4,
-            width: "100%",
-            height: "100vh",
-            background: "transparent",
-            position:"absolute",
-            top: 0,
-            right: 0
-        } as React.CSSProperties;
-
         return (
-            <div ref={this.wrappingElement} style={wrapperStyle}>
-                {/*{(this.state.positionX - this.state.width/2)/(this.state.width/2)}*/}
-                {/*{(this.state.positionY - this.state.height/2)/(this.state.height/2)}*/}
-                <div style={fnameStyle}>Tristan</div>
-                <div style={lnameStyle}>Ratz</div>
-                <div style={overlay} onMouseMove={this.mouseMoved.bind(this)} />
+            <div ref={this.wrappingElement} className="intro">
+                <div className="effect" style={fnameStyle}>TRISTAN</div>
+                <div className="effect" style={lnameStyle}>RATZ</div>
+                <div className="overlay" onMouseMove={this.mouseMoved.bind(this)} />
                 <Navigation accentColor={accentColor} />
             </div>);
     }

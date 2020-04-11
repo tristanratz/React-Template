@@ -1,4 +1,6 @@
 import React from "react";
+import "./style.scss"
+import {Icons} from "../Icons";
 
 interface Props {
     accentColor: string
@@ -11,28 +13,24 @@ export class Navigation extends React.Component<Props> {
 
 
     render(): React.ReactElement| null | undefined {
-        const wrapperStyle = {
-            zIndex: 20,
-            width: "75%",
-            height: "25%",
-            position: "absolute",
-            fontSize: "2vh",
-            bottom: 0,
-            marginRight: "auto",
-            marginLeft: "auto",
-            overflow: "hidden",
-        } as React.CSSProperties;
-
-        const titleStyle = {
-            background: "white",
-            display: "inline-block",
+        const childStyle = {
             color: this.props.accentColor,
         } as React.CSSProperties;
 
         return (
-            <div style={wrapperStyle}>
-                <h3 style={titleStyle}>Tristan</h3>
-                <h3 style={titleStyle}>Ratz</h3>
+            <div>
+                <div className="navigation">
+                    <h3 style={childStyle}>TRISTAN</h3><br/>
+                    <h3 style={childStyle}>RATZ</h3><br/>
+                    <div style={childStyle} className="navBar">
+                        <div>About</div>
+                        <div>Contact</div>
+                        <div>Projects</div>
+                    </div>
+                </div>
+                <div className="links">
+                    <Icons />
+                </div>
             </div>
         );
     }
