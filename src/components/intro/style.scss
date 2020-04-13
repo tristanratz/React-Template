@@ -5,13 +5,13 @@
   height: 100vh;
   background: white;
   //text-shadow: 1px 0 black, 0px 1px black, -1px 0 black, 0px -1px black; //, 1px 1px black, -1px -1px black
-  font-size: 45vh;
   text-align: center;
   transform-origin: center;
   perspective: 2500px;
 
   .effect {
     transform-origin: inherit;
+    font-size: 23vw;
     // color: rgba(0,0,0,0.2);
     opacity: 0.2;
   }
@@ -79,10 +79,5 @@ Navigation
   text-align: left;
   right: 0;
   font-size: 0;
-  padding: 25px;
-
-  a {
-    font-size: 1vh;
-    padding: 5px;
-  }
+  padding: 0 25px 25px 0;
 }

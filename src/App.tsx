@@ -1,15 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Intro } from './components/intro';
 import {About} from "./components/about";
 
 
 function App() {
-  return (
+    const accentColor: string = "#111921";
+    return (
       <div className="App">
-        <Intro />
-        <About />
+        <Intro accentColor={ accentColor } />
+        <About accentColor={ accentColor } />
       </div>
   );
 }

@@ -1,0 +1,18 @@
+a {
+  font-size: 2vh;
+  padding-right: 10px;
+  transition: 0.1s;
+
+  &:link {
+    color: inherit;
+  }
+
+  &:hover, &:visited:hover {
+    padding-bottom: 30px;
+    color: gray;
+  }
+
+  &:visited  {
+    color: inherit;
+  }
+}

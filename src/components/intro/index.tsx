@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, RefObject} from 'react';
+import React, { RefObject} from 'react';
 import {Navigation} from "./Navigation";
 
 interface State {
@@ -9,7 +9,7 @@ interface State {
 }
 
 interface Props {
-
+    accentColor: string
 }
 
 export class Intro extends React.Component<Props, State> {
@@ -46,8 +46,9 @@ export class Intro extends React.Component<Props, State> {
         })
     }
 
-    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const accentColor: string = "#111921";
+    render(): React.ReactElement | null | undefined {
+
+        const { accentColor } = this.props;
 
         const fnameStyle = {
             color: accentColor,

@@ -7,11 +7,6 @@ interface Props {
 }
 
 export class Navigation extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-    }
-
-
     render(): React.ReactElement| null | undefined {
         const childStyle = {
             color: this.props.accentColor,
