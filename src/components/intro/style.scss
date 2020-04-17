@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .intro {
   display: block;
   overflow: hidden;
@@ -6,16 +8,22 @@
   background: white;
   //text-shadow: 1px 0 black, 0px 1px black, -1px 0 black, 0px -1px black; //, 1px 1px black, -1px -1px black
   text-align: center;
-  transform-origin: center;
+  transform-origin: center center;
   perspective: 2500px;
 
-  .effect {
-    transform-origin: inherit;
-    font-size: 23vw;
-    // color: rgba(0,0,0,0.2);
-    opacity: 0.2;
+  .effectWrapper {
+    .effect {
+      position: absolute;
+      color: $accentColor;
+      transform-origin: inherit;
+      font-size: 23vw;
+      // color: rgba(0,0,0,0.2);
+      opacity: 0.5;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
-
   .overlay {
     z-index: 4;
     width: 100%;
@@ -24,6 +32,18 @@
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  &::after {
+    background: $accentColor;
+    content: "";
+    width: 150%;
+    height: 100vh;
+    top: 80vh;
+    transform-origin: left top;
+    transform: rotate(5deg);
+    left: 0;
+    position: absolute;
   }
 }
 
@@ -51,6 +71,7 @@ Navigation
     padding-left: 6vh;
     font-weight: bolder;
     margin-top: 0;
+    color: $accentColor,
   }
 
   .navBar {
@@ -80,4 +101,5 @@ Navigation
   right: 0;
   font-size: 0;
   padding: 0 25px 25px 0;
+  color: white;
 }

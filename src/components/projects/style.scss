@@ -1,0 +1,29 @@
+@import "../../variables";
+
+.projects {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  .contentWrapper {
+    color: white;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 2000px;
+    margin: auto auto;
+  }
+
+  &::before {
+    background: $accentColor;
+    content: "";
+    width: 150%;
+    height: 40vh;
+    display: block;
+    margin-top: -40vh;
+    transform-origin: left bottom;
+    transform: rotate(5deg);
+  }
+}

@@ -2,14 +2,16 @@ import React from 'react';
 import './App.css';
 import { Intro } from './components/intro';
 import {About} from "./components/about";
+import {Projects} from "./components/projects";
 
 
 function App() {
-    const accentColor: string = "#111921";
+    const accentColor: boolean = true;
     return (
       <div className="App">
-        <Intro accentColor={ accentColor } />
-        <About accentColor={ accentColor } />
+        <Intro />
+        <About />
+        <Projects />
       </div>
   );
 }

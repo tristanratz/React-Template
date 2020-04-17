@@ -1,41 +1,85 @@
+@import "../../variables";
 
 .about {
   width: 100%;
-  height: 100vh;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+  background: $accentColor;
 
-  div {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
+  .contentWrapper {
+    color: white;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 2000px;
+    margin: auto auto;
 
-  .left {
-    width: 50vw;
-    overflow: hidden;
+    .left, .right {
+      flex-grow: 1;
+      flex-shrink: 1;
+      width: 50vh;
+    }
 
-    p {
-      font-size: 5vh;
-      width: 50vw;
+    .left {
+      //width: 50vw;
+      height: 100vh;
       overflow: hidden;
+      perspective: 50px;
+      margin: auto auto;
+      background: rgba(255,255,255,0.00);
+      color: rgba(255,255,255,0.01);
+      //box-shadow: inset -10px 10px 50px rgba(0,0,0,0.5);
+
+      p {
+        font-size: 5vh;
+        //width: 50vw;
+        overflow: hidden;
+        transform: scale(1.75) translate(0, -25%);
+        position: absolute;
+        top: 50%;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        z-index: 5;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .image {
+        box-shadow: 5px 5px 100px rgba(0,0,0,0.5);
+        position: absolute;
+        top: 25vh;
+        left: 25%;
+        z-index: 4;
+        width: 50%;
+        height: 50vh;
+        background-image: url("../../rsc/tristan.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+      }
+
     }
-  }
 
-  .right {
-    width: 25vw;
-    padding: 12.5vw;
-    text-align: justify;
+    .right .wrapper {
+      //width: 25vw;
+      //min-width: 12.5vh;
+      padding: 10vw;
+      text-align: justify;
+      margin: auto auto;
 
-    label {
-      text-transform: uppercase;
-      font-size: 1vh;
+      label {
+        text-transform: uppercase;
+        font-size: 1vh;
+        font-weight: bold;
+      }
 
-    }
-
-    .contact {
-      font-size: inherit;
+      .contact {
+        font-size: inherit;
+      }
     }
   }
 }

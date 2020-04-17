@@ -8,22 +8,23 @@ interface State {
     height: number;
 }
 
-interface Props {
-    accentColor: string
-}
+interface Props {}
 
 export class Intro extends React.Component<Props, State> {
 
-    state: State;
     wrappingElement: RefObject<HTMLDivElement>;
+    fName: RefObject<HTMLDivElement>;
+    lName: RefObject<HTMLDivElement>;
 
     constructor(props: Props) {
         super(props);
         this.wrappingElement = React.createRef();
+        this.fName = React.createRef();
+        this.lName = React.createRef();
 
         this.state = {
-            positionX: 0,
-            positionY: 0,
+            positionX: window.innerWidth/2,
+            positionY: window.innerHeight/2,
             width: 0,
             height: 0,
         };
@@ -48,32 +49,36 @@ export class Intro extends React.Component<Props, State> {
 
     render(): React.ReactElement | null | undefined {
 
-        const { accentColor } = this.props;
+        const fNameHeight = (this.fName.current) ? this.fName.current!.offsetHeight : 0;
+        const fNameWidth = (this.fName.current) ? this.fName.current!.offsetWidth : 0;
 
         const fnameStyle = {
-            color: accentColor,
-            transform: "translate3d(" + (-this.state.positionX + this.state.width/2)/16 + "px, " +
-                (-this.state.positionY + this.state.height*1.5)/16 + "px, 0)" +
+            transform: "translate3d(" + ((-this.state.positionX + this.state.width/2)/16 - fNameWidth/2) + "px, " +
+                ((-this.state.positionY - this.state.height)/16 - fNameHeight*0.75) + "px, 0)" +
                 "rotate3d(" + (-1*(this.state.positionY - this.state.height/2)/10)/(this.state.height/2) + ", "
                 + ((this.state.positionX - this.state.width/2)/10)/(this.state.width/2) +", 0,10deg)",
             zIndex: 2,
         };
 
+        const lNameHeight = (this.lName.current) ? this.lName.current!.offsetHeight : 0;
+        const lNameWidth = (this.lName.current) ? this.lName.current!.offsetWidth : 0;
+
         const lnameStyle = {
-            color: accentColor,
-            transform: "translate3d(" + (-this.state.positionX + this.state.width/2)/8 + "px, " +
-                (-this.state.positionY - this.state.height*2)/8 + "px, 0) " +
-                "rotate3d(" + (-1*(this.state.positionY - this.state.height/2)/10)/(this.state.height/2) + ", "
-                + ((this.state.positionX - this.state.width/2)/10)/(this.state.width/2) +", 0,10deg)",
+            transform: "translate3d(" + ((-this.state.positionX + this.state.width/2)/8 - lNameWidth/2) + "px, " +
+                (((-this.state.positionY - this.state.height)/8) - lNameHeight/4)+ "px, 0) " +
+                "rotate3d(" + (-1*(this.state.positionY - this.state.height/2)/100)/(this.state.height/2) + ", "
+                + ((this.state.positionX - this.state.width/2)/100)/(this.state.width/2) +", 0,10deg)",
             zIndex: 3,
         };
 
         return (
             <div ref={this.wrappingElement} className="intro">
-                <div className="effect" style={fnameStyle}>TRISTAN</div>
-                <div className="effect" style={lnameStyle}>RATZ</div>
+                <div className="effectWrapper">
+                    <div ref={this.fName} className="effect" style={fnameStyle}>TRISTAN</div>
+                    <div ref={this.lName} className="effect" style={lnameStyle}>RATZ</div>
+                </div>
                 <div className="overlay" onMouseMove={this.mouseMoved.bind(this)} />
-                <Navigation accentColor={accentColor} />
+                <Navigation/>
             </div>);
     }
 }
