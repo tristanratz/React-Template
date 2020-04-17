@@ -83,8 +83,8 @@ export class About extends React.Component<Props, State> {
 
     mouseMoved(e: React.MouseEvent): void {
         this.setState({
-            positionX: e.nativeEvent.offsetX,
-            positionY: e.nativeEvent.offsetY,
+            positionY: e.clientY,
+            positionX: e.clientX,
             width: this.wrappingElement.current!.offsetWidth,
             height: this.wrappingElement.current!.offsetHeight
         })
@@ -107,10 +107,9 @@ export class About extends React.Component<Props, State> {
 
         return (
             <div className="about">
-                <div className="contentWrapper">
+                <div className="contentWrapper"  ref={this.wrappingElement} onMouseMove={this.mouseMoved.bind(this)}>
                     <div className="left">
                         <div className="image" style={imageStyle} />
-                        <div className="overlay" ref={this.wrappingElement} onMouseMove={this.mouseMoved.bind(this)} />
                     </div>
                     <div className="right">
                         <div className="wrapper">

@@ -40,8 +40,8 @@ export class Intro extends React.Component<Props, State> {
 
     mouseMoved(e: React.MouseEvent): void {
         this.setState({
-            positionX: e.nativeEvent.offsetX,
-            positionY: e.nativeEvent.offsetY,
+            positionX: e.clientX,
+            positionY: e.clientY,
             width: this.wrappingElement.current!.offsetWidth,
             height: this.wrappingElement.current!.offsetHeight
         })
@@ -72,12 +72,11 @@ export class Intro extends React.Component<Props, State> {
         };
 
         return (
-            <div ref={this.wrappingElement} className="intro">
+            <div ref={this.wrappingElement} className="intro" onMouseMove={this.mouseMoved.bind(this)}>
                 <div className="effectWrapper">
                     <div ref={this.fName} className="effect" style={fnameStyle}>TRISTAN</div>
                     <div ref={this.lName} className="effect" style={lnameStyle}>RATZ</div>
                 </div>
-                <div className="overlay" onMouseMove={this.mouseMoved.bind(this)} />
                 <Navigation/>
             </div>);
     }
