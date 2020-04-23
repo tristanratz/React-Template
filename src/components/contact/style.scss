@@ -1,0 +1,23 @@
+@import "../../variables";
+
+.contact {
+  background: $accentColor;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+
+  .contentWrapper {
+    margin: auto auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 2000px;
+
+    h1 {
+      text-align: center;
+    }
+  }
+}

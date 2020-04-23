@@ -1,19 +1,95 @@
 @import "../../variables";
 
 .projects {
-  height: 100vh;
   width: 100%;
   overflow: hidden;
+  background: #5E5E5E;
 
   .contentWrapper {
-    color: white;
-    display: flex;
+    margin: 10% auto auto;
     flex-flow: row wrap;
     align-content: stretch;
     justify-content: space-around;
     width: 100%;
     max-width: 2000px;
-    margin: auto auto;
+
+    h1 {
+      color: white;
+      padding: 5vw 10vw;
+    }
+
+    .projectsWrapper {
+      color: black;
+      display: flex;
+
+      .project {
+        height: 500px;
+        width: 500px;
+        background: white;
+        color: black;
+        box-sizing: border-box;
+        margin: 1rem 5vw;
+        flex-shrink: 0;
+        border-radius: $borderradius;
+        box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+        position: relative;
+        overflow: hidden;
+
+        .titleSheet {
+          padding: 3rem;
+          position: absolute;
+          top: auto;
+          bottom: 0;
+          margin-top: auto;
+          margin-bottom: 0;
+
+          h2 {
+            margin: 0;
+            padding: 1rem 0 0;
+          }
+
+          h5 {
+            font-size: 0.7em;
+            font-weight: lighter;
+            color: gray;
+            margin: 0;
+            padding: 0 0 2rem;
+          }
+
+          .buttons {
+            overflow: hidden;
+            position: relative;
+
+            .button {
+              font-size: 0.6em;
+              color: white;
+              background: $accentColor;
+              border-radius: $borderradius;
+              padding: 0.5rem 1rem;
+              display: inline-block;
+              margin-right: 1rem;
+
+              &:hover {
+                opacity: 0.8;
+              }
+
+            }
+
+            a {
+              position: absolute;
+              font-size: 1.2em;
+              box-sizing: content-box;
+              padding: 0.2rem;
+            }
+          }
+        }
+
+        h2 {
+          color: black;
+        }
+      }
+
+    }
   }
 
   &::before {
@@ -25,5 +101,25 @@
     margin-top: -40vh;
     transform-origin: left bottom;
     transform: rotate(5deg);
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  }
+
+  &::after {
+    background: $accentColor;
+    content: "";
+    width: 150%;
+    height: 15vh;
+    display: block;
+    margin-top: 10vh;
+    transform-origin: left top;
+    transform: rotate(5deg);
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  }
+
+  .project {
+    width: 90%;
+    height: 90vh;
+    max-width: 500px;
+    max-height: 500px;
   }
 }
