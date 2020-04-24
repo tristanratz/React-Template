@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import {projects} from "../../store/projects";
 import {Project} from "./project";
+import {ProjectNavigation} from "./projectNavigation";
 
 interface State {
     openElement: number; // With content teext beeing shown. Must be -1 or activeElement
@@ -10,7 +11,7 @@ interface State {
 
 interface Props {}
 
-export type OpenEvent = "open"|"close"|"click";
+export type ClickEvent = "open"|"close"|"click";
 
 export class Projects extends React.Component<Props, State> {
 
@@ -22,6 +23,8 @@ export class Projects extends React.Component<Props, State> {
             openElement: -1,
             activeElement: 0
         }
+
+        this.handleClickEvent = this.handleClickEvent.bind(this);
     }
 
     handleOpenEvent(i: number, open: boolean) {
@@ -30,7 +33,7 @@ export class Projects extends React.Component<Props, State> {
         });
     }
 
-    handleClickEvent(e: OpenEvent, i: number) {
+    handleClickEvent(e: ClickEvent, i: number) {
         if (this.state.activeElement !== i) {
             return () => {
                 this.setState({
@@ -66,11 +69,12 @@ export class Projects extends React.Component<Props, State> {
                             console.log(i)
                             return (
                                 <Project project={project} open={i === this.state.openElement} onClick={
-                                    (event:OpenEvent) => this.handleClickEvent(event, i)} active={i === this.state.activeElement} key={i}/>
+                                    (event:ClickEvent) => this.handleClickEvent(event, i)} active={i === this.state.activeElement} key={i}/>
                             );
                         })}
                     </div>
                 </div>
+                <ProjectNavigation projects={projects} active={this.state.activeElement} onClick={this.handleClickEvent} />
 
             </div>
         </div>);

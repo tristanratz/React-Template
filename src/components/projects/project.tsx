@@ -6,13 +6,13 @@ import {
     IoMdLink,
     IoMdClose
 } from "react-icons/io";
-import {OpenEvent} from "./index";
+import {ClickEvent} from "./index";
 
 interface Props {
     project: any;
     open: boolean;
     active: boolean;
-    onClick:(event:OpenEvent) => (() => void);
+    onClick:(event:ClickEvent) => (() => void);
 }
 
 export class Project extends React.Component<Props> {
