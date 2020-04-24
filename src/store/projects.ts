@@ -60,5 +60,5 @@ export const projects:ProjectData[] = [
         language: "en/de",
         image: "none",
         date: "2014",
-},
+    },
 ];

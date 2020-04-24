@@ -11,6 +11,7 @@ import {OpenEvent} from "./index";
 interface Props {
     project: any;
     open: boolean;
+    active: boolean;
     onClick:(event:OpenEvent) => (() => void);
 }
 
@@ -29,6 +30,8 @@ export class Project extends React.Component<Props> {
             project: true,
             open: this.props.open,
             closed: !this.props.open,
+            active: this.props.active,
+            inactive: !this.props.active,
         });
 
         return (
@@ -54,14 +57,16 @@ export class Project extends React.Component<Props> {
                 </div>
                 <div className="closeButton" onClick={this.props.onClick("close")}><IoMdClose /></div>
                 <div className="article">
-                    <h2>{this.project.name} / {this.project.date}</h2>
-                    <h5>{this.project.technologies.map((t, i) => (
-                        (this.project.technologies.length-1 > i) ? `${t}, ` : t // So that the last tech has no comma
-                    ))}</h5>
-                    <strong>{this.project.description}</strong>
-                    <p>
-                        {this.project.text}
-                    </p>
+                    <div className="articleContent">
+                        <h3>{this.project.name} / {this.project.date}</h3>
+                        <h5>{this.project.technologies.map((t, i) => (
+                            (this.project.technologies.length-1 > i) ? `${t}, ` : t // So that the last tech has no comma
+                        ))}</h5>
+                        <strong>{this.project.description}</strong>
+                        <p>
+                            {this.project.text}
+                        </p>
+                    </div>
                 </div>
             </div>
         );

@@ -3,7 +3,7 @@
 .projects {
   width: 100%;
   overflow: hidden;
-  background: #5E5E5E;
+  background: #c8c8c8;
 
   .contentWrapper {
     margin: 10% auto auto;
@@ -14,146 +14,164 @@
     max-width: 2000px;
 
     h1 {
-      color: white;
+      color: black;
       padding: 5vw 10vw;
+      text-align: center;
     }
 
-    .projectsWrapper {
+    .projectsWindow {
       color: black;
-      display: flex;
+      $projectSize: 500px;
+      width: $projectSize;
+      height: $projectSize;
+      margin: 1rem auto;
 
-      .project {
-        height: 500px;
-        width: 500px;
-        background: white;
-        color: black;
-        box-sizing: border-box;
-        margin: 1rem 0 0 5vw;
-        flex-shrink: 0;
-        border-radius: $borderradius;
-        box-shadow: 0 0 30px rgba(0,0,0, 0.3);
-        position: relative;
-        overflow: hidden;
+      .projectsWrapper {
+        display: flex;
+        transition: transform 0.5s;
+        position: absolute;
 
-        h2 {
-          margin: 0;
-          padding: 1rem 0 0;
-          transition: 0.4s;
-          transition-delay: 0.1s;
-        }
+        .project {
+          height: $projectSize;
+          width: $projectSize;
+          background: white;
+          color: black;
+          box-sizing: border-box;
+          margin: 0 5vw 0 0 ;
+          flex-shrink: 0;
+          border-radius: $borderradius;
+          box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+          position: relative;
+          overflow: hidden;
+          opacity: 0.5;
+          transition: opacity 0.5s;
 
-        h5 {
-          font-size: 0.7em;
-          font-weight: lighter;
-          color: gray;
-          margin: 0;
-          padding: 0 0 2rem;
-          transition: 0.5s;
-          transition-delay: 0.15s;
-        }
-
-        .titleSheet {
-          padding: 3rem;
-          position: absolute;
-          top: auto;
-          bottom: 0;
-          margin-top: auto;
-          margin-bottom: 0;
-          transition: opacity 0.7s ease-out;
-
-          .date {
-            transition: 0.5s;
-
+          &.active {
+            opacity: 1;
           }
 
-          .buttons {
-            overflow: hidden;
-            position: relative;
+          &.inactive .button:hover {
+            opacity: 1;
+          }
+
+          h2 {
+            margin: 0;
+            padding: 1rem 0 0;
+            transition: 0.4s;
+            transition-delay: 0.1s;
+          }
+
+          h5 {
+            font-size: 0.7em;
+            font-weight: lighter;
+            color: gray;
+            margin: 0;
+            padding: 0 0 2rem;
             transition: 0.5s;
-            transition-delay: 0.2s;
+            transition-delay: 0.15s;
+          }
 
-            .button {
-              font-size: 0.6em;
-              color: white;
-              background: $accentColor;
-              border-radius: $borderradius;
-              padding: 0.5rem 1rem;
-              display: inline-block;
-              margin-right: 1rem;
-              transition: opacity 0.2s;
 
-              &:hover {
-                opacity: 0.8;
+          .titleSheet {
+            padding: 3rem;
+            position: absolute;
+            top: auto;
+            bottom: 0;
+            margin-top: auto;
+            margin-bottom: 0;
+            transition: opacity 0.7s ease-out;
+
+            .date {
+              transition: 0.5s;
+
+            }
+
+            .buttons {
+              overflow: hidden;
+              position: relative;
+              transition: 0.5s;
+              transition-delay: 0.2s;
+
+              .button {
+                font-size: 0.6em;
+                color: white;
+                background: $accentColor;
+                border-radius: $borderradius;
+                padding: 0.5rem 1rem;
+                display: inline-block;
+                margin-right: 1rem;
+                transition: opacity 0.2s;
+
+                &:hover {
+                  opacity: 0.8;
+                }
               }
 
-            }
-
-            a {
-              position: absolute;
-              font-size: 1.2em;
-              box-sizing: content-box;
-              padding: 0.2rem;
+              a {
+                position: absolute;
+                font-size: 1.2em;
+                box-sizing: content-box;
+                padding: 0.2rem;
+              }
             }
           }
-        }
 
-        .closeButton {
-          padding: 1.5rem;
-          position: absolute;
-          right: 0;
-          z-index: 1;
-          transition: 1s ease-out;
-        }
-
-        .article {
-          padding: 3rem;
-          overflow-y: auto;
-          transition: 0.5s;
-
-          .closed & {
-            color: green;
-          }
-        }
-
-        h2 {
-          color: black;
-        }
-
-        &.closed {
           .closeButton {
-            transform: translateY(-150%);
+            padding: 1.5rem;
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            transition: 1s ease-out;
           }
 
           .article {
-            transform: translateX(150%);
+            overflow-y: auto;
+            transition: 0.5s;
+
+            .articleContent {
+              padding: 3rem;
+            }
           }
 
-          .titleSheet {
-            h2, h5, .date, .buttons {
+          h2 {
+            color: black;
+          }
+
+          &.closed {
+            .closeButton {
+              transform: translateY(-150%);
+            }
+
+            .article {
+              transform: translateX(150%);
+            }
+
+            .titleSheet {
+              h2, h5, .date, .buttons {
+                transform: translateX(0);
+              }
+            }
+          }
+
+          &.open {
+            .closeButton {
+              transform: translateY(0);
+            }
+
+            .article {
               transform: translateX(0);
             }
-          }
-        }
 
-        &.open {
-          .closeButton {
-            transform: translateY(0);
-          }
+            .titleSheet {
+              opacity: 0;
 
-          .article {
-            transform: translateX(0);
-          }
-
-          .titleSheet {
-            opacity: 0;
-
-            h2, h5, .date, .buttons {
-              transform: translateX(-150%);
+              h2, h5, .date, .buttons {
+                transform: translateX(-150%);
+              }
             }
           }
         }
       }
-
     }
   }
 
