@@ -28,12 +28,29 @@
         background: white;
         color: black;
         box-sizing: border-box;
-        margin: 1rem 5vw;
+        margin: 1rem 0 0 5vw;
         flex-shrink: 0;
         border-radius: $borderradius;
-        box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+        box-shadow: 0 0 30px rgba(0,0,0, 0.3);
         position: relative;
         overflow: hidden;
+
+        h2 {
+          margin: 0;
+          padding: 1rem 0 0;
+          transition: 0.4s;
+          transition-delay: 0.1s;
+        }
+
+        h5 {
+          font-size: 0.7em;
+          font-weight: lighter;
+          color: gray;
+          margin: 0;
+          padding: 0 0 2rem;
+          transition: 0.5s;
+          transition-delay: 0.15s;
+        }
 
         .titleSheet {
           padding: 3rem;
@@ -42,23 +59,18 @@
           bottom: 0;
           margin-top: auto;
           margin-bottom: 0;
+          transition: opacity 0.7s ease-out;
 
-          h2 {
-            margin: 0;
-            padding: 1rem 0 0;
-          }
+          .date {
+            transition: 0.5s;
 
-          h5 {
-            font-size: 0.7em;
-            font-weight: lighter;
-            color: gray;
-            margin: 0;
-            padding: 0 0 2rem;
           }
 
           .buttons {
             overflow: hidden;
             position: relative;
+            transition: 0.5s;
+            transition-delay: 0.2s;
 
             .button {
               font-size: 0.6em;
@@ -68,6 +80,7 @@
               padding: 0.5rem 1rem;
               display: inline-block;
               margin-right: 1rem;
+              transition: opacity 0.2s;
 
               &:hover {
                 opacity: 0.8;
@@ -84,8 +97,60 @@
           }
         }
 
+        .closeButton {
+          padding: 1.5rem;
+          position: absolute;
+          right: 0;
+          z-index: 1;
+          transition: 1s ease-out;
+        }
+
+        .article {
+          padding: 3rem;
+          overflow-y: auto;
+          transition: 0.5s;
+
+          .closed & {
+            color: green;
+          }
+        }
+
         h2 {
           color: black;
+        }
+
+        &.closed {
+          .closeButton {
+            transform: translateY(-150%);
+          }
+
+          .article {
+            transform: translateX(150%);
+          }
+
+          .titleSheet {
+            h2, h5, .date, .buttons {
+              transform: translateX(0);
+            }
+          }
+        }
+
+        &.open {
+          .closeButton {
+            transform: translateY(0);
+          }
+
+          .article {
+            transform: translateX(0);
+          }
+
+          .titleSheet {
+            opacity: 0;
+
+            h2, h5, .date, .buttons {
+              transform: translateX(-150%);
+            }
+          }
         }
       }
 
@@ -114,12 +179,5 @@
     transform-origin: left top;
     transform: rotate(5deg);
     box-shadow: 0 0 20px rgba(0,0,0,0.8);
-  }
-
-  .project {
-    width: 90%;
-    height: 90vh;
-    max-width: 500px;
-    max-height: 500px;
   }
 }

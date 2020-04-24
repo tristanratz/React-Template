@@ -1,13 +1,31 @@
 import React from "react";
 import "./style.scss";
-import {projects} from "../../store/projects";
+import {ProjectData, projects} from "../../store/projects";
 import {Project} from "./project";
 
+interface State {
+    openElement: number;
+}
 
-export class Projects extends React.Component {
+interface Props {}
 
-    handleClick(i: number) {
+export type OpenEvent = "open"|"close"|"click";
 
+export class Projects extends React.Component<Props, State> {
+
+    state: State
+
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            openElement: -1
+        }
+    }
+
+    handleOpenEvent(i: number, project: ProjectData, open: boolean) {
+        this.setState({
+            openElement: (open) ? i : -1,
+        });
     }
 
     render(): React.ReactElement {
@@ -17,9 +35,18 @@ export class Projects extends React.Component {
                 <h1>Projects</h1>
                 <div className="projectsWrapper">
                     {projects.map((project, i) => {
-                        const open = false;
                         return (
-                            <Project project={project} open={open} onClick={() => this.handleClick(i)} key={i}/>
+                            <Project project={project} open={i === this.state.openElement} onClick={
+                                (event:OpenEvent) => {
+                                    switch (event) {
+                                        case "open":
+                                            return () => this.handleOpenEvent(i, project, true);
+                                        case "close":
+                                            return () => this.handleOpenEvent(i, project, false);
+                                        case "click":
+                                            return () => {};
+                                    }
+                                }} key={i}/>
                         );
                     })}
                 </div>

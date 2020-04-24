@@ -40,6 +40,7 @@ export const projects:ProjectData[] = [
         language: "en",
         image: "none",
         date: "2019",
+        github: "https://github.com/tristanratz/chatapp"
     },
     {
         name: "Website",
