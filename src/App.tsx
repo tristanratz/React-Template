@@ -5,17 +5,24 @@ import {About} from "./components/about";
 import {Projects} from "./components/projects";
 import {Contact} from "./components/contact";
 
+interface State {
+    refs: {}
+}
 
-function App() {
+interface Props {}
+
+export class App extends React.Component<Props, State>{
     //const accentColor: boolean = true;
-    return (
-      <div className="App">
-        <Intro />
-        <About />
-        <Projects />
-        <Contact />
-      </div>
-  );
+    render(): React.ReactNode {
+        return (
+            <div className="App">
+                <Intro/>
+                <About/>
+                <Projects/>
+                <Contact/>
+            </div>
+        );
+    }
 }
 
 export default App;

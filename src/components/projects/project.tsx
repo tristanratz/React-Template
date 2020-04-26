@@ -34,8 +34,13 @@ export class Project extends React.Component<Props> {
             inactive: !this.props.active,
         });
 
+        const backgroundImg = {
+            background: (this.props.project.image) ? `url(${this.props.project.image})` : "transparent",
+        }
+
         return (
             <div className={projectCN} onClick={this.props.onClick("click")}>
+                <div className="backgroundImg" style={backgroundImg}/>
                 <div className="titleSheet">
                     <div className="date">{this.project.date}</div>
                     <h2>{this.project.name}</h2>
@@ -66,6 +71,13 @@ export class Project extends React.Component<Props> {
                         <p>
                             {this.project.text}
                         </p>
+                        {(this.project.github || this.project.link) && <label>See more:</label>}
+                        {this.project.github && (
+                            <a href={this.project.github!}><IoLogoGithub/></a>
+                        )}
+                        {this.project.link && (
+                            <a href={this.project.link!}><IoMdLink/></a>
+                        )}
                     </div>
                 </div>
             </div>

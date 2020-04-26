@@ -47,7 +47,7 @@ Navigation
   display: inline-block;
   height: 25%;
   position: absolute;
-  font-size: 2vh;
+  font-size: 2rem;
   bottom: 0;
   overflow: hidden;
   text-align: left;
@@ -56,18 +56,25 @@ Navigation
   div, h3 {
     background: white;
     display: inline-block;
-    margin-bottom: 10px;
-    padding: 5px;
-    padding-right: 20px;
-    padding-left: 6vh;
     font-weight: bolder;
     margin-top: 0;
-    color: $accentColor,
+    margin-bottom: 0;
+    color: $accentColor;
+    padding: 5px 20px 5px 3rem;
+  }
+
+  h3:first-of-type {
+    padding-bottom: 0;
+  }
+  h3:last-of-type {
+    padding-top: 0;
   }
 
   .navBar {
+    margin-top: 10px;
+
     div {
-      font-size: 1vh;
+      font-size: 0.8rem;
       font-weight: lighter;
       margin-right: 20px;
       display: inline-block;
@@ -76,7 +83,7 @@ Navigation
 
       &:hover {
         opacity: 0.75;
-        transform: scale(1.1);
+        transform: translateY(-2px);
       }
     }
   }
