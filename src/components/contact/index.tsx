@@ -5,7 +5,7 @@ import {Icons} from "../Icons";
 export class Contact extends React.Component {
     render(): React.ReactElement {
         return (
-            <div className="contact">
+            <div className="contact"  id="contact">
                 <div className="contentWrapper">
                     <h1>Contact</h1>
                     <p>

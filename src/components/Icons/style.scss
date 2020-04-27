@@ -8,8 +8,8 @@ a {
   }
 
   &:hover, &:visited:hover {
-    padding-bottom: 30px;
-    color: gray;
+    color: inherit;
+    opacity: 0.5;
   }
 
   &:visited  {

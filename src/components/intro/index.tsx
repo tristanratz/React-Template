@@ -19,12 +19,14 @@ export class Intro extends React.Component<Props, State> {
     wrappingElement: RefObject<HTMLDivElement>;
     fName: RefObject<HTMLDivElement>;
     lName: RefObject<HTMLDivElement>;
+    nextSection: HTMLElement | null;
 
     constructor(props: Props) {
         super(props);
         this.wrappingElement = React.createRef();
         this.fName = React.createRef();
         this.lName = React.createRef();
+        this.nextSection = null;
 
         this.state = {
             positionX: window.innerWidth/2,
@@ -40,6 +42,7 @@ export class Intro extends React.Component<Props, State> {
             width: this.wrappingElement.current!.offsetWidth,
             height: this.wrappingElement.current!.offsetHeight
         })
+        this.nextSection = document.getElementById("about")
     }
 
     mouseMoved(e: React.MouseEvent): void {
@@ -76,13 +79,17 @@ export class Intro extends React.Component<Props, State> {
         };
 
         return (
-            <div ref={this.wrappingElement} className="intro" onMouseMove={this.mouseMoved.bind(this)}>
+            <div ref={this.wrappingElement} className="intro" id="intro" onMouseMove={this.mouseMoved.bind(this)}>
                 <div className="effectWrapper">
                     <div ref={this.fName} className="effect" style={fnameStyle}>TRISTAN</div>
                     <div ref={this.lName} className="effect" style={lnameStyle}>RATZ</div>
                 </div>
                 <Navigation/>
-                <div className="downArrow"><IoMdArrowDown /></div>
+                <div className="downArrow"
+                onClick={() => {
+                    this.nextSection!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                ><IoMdArrowDown /></div>
             </div>);
     }
 }

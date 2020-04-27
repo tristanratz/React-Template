@@ -60,7 +60,7 @@ export class Projects extends React.Component<Props, State> {
         }
 
         return (
-        <div className="projects" >
+        <div className="projects"  id="projects">
             <div className="contentWrapper">
                 <h1>Projects</h1>
                 <div className="projectsWindow">
