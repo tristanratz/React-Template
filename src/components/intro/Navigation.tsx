@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.scss"
 import {Icons} from "../Icons";
 
 export class Navigation extends React.Component {
@@ -7,15 +6,9 @@ export class Navigation extends React.Component {
         return (
             <div>
                 <div className="navigation">
-                    <h3>TRISTAN</h3><br/>
-                    <h3>RATZ</h3><br/>
-                    <div className="navBar">
-                        <div>About</div>
-                        <div>Contact</div>
-                        <div>Projects</div>
-                    </div>
-                </div>
-                <div className="links">
+                    <a>About</a>
+                    <a>Projects</a>
+                    <a>Contact</a>
                     <Icons />
                 </div>
             </div>

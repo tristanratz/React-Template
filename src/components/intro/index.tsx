@@ -1,5 +1,9 @@
 import React, { RefObject} from 'react';
+import "./style.scss";
 import {Navigation} from "./Navigation";
+import {
+    IoMdArrowDown
+} from "react-icons/io"
 
 interface State {
     positionX: number;
@@ -65,7 +69,7 @@ export class Intro extends React.Component<Props, State> {
 
         const lnameStyle = {
             transform: "translate3d(" + ((-this.state.positionX + this.state.width/2)/8 - lNameWidth/2) + "px, " +
-                (((-this.state.positionY - this.state.height)/8) - lNameHeight/4)+ "px, 0) " +
+                (((-this.state.positionY - this.state.height)/8))+ "px, 0) " +
                 "rotate3d(" + (-1*(this.state.positionY - this.state.height/2)/100)/(this.state.height/2) + ", "
                 + ((this.state.positionX - this.state.width/2)/100)/(this.state.width/2) +", 0,10deg)",
             zIndex: 3,
@@ -78,6 +82,7 @@ export class Intro extends React.Component<Props, State> {
                     <div ref={this.lName} className="effect" style={lnameStyle}>RATZ</div>
                 </div>
                 <Navigation/>
+                <div className="downArrow"><IoMdArrowDown /></div>
             </div>);
     }
 }
