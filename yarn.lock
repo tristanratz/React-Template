@@ -8580,7 +8580,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8813,6 +8813,13 @@ react-parallax@^3.0.3:
   resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.0.3.tgz#5550f1e81bf040b240045348cb3b039b73a735ef"
   integrity sha512-kdoMjg5B9nQFh3mTFrnzkr7AoG89L/tq1c98ho3g+11UwfeYePji9D3oeqN/oDtJemWKypnB8OYrzQ/BTazrNA==
 
+react-reveal@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-reveal/-/react-reveal-1.2.2.tgz#f47fbc44debc4c185ae2163a215a9e822c7adfef"
+  integrity sha512-JCv3fAoU6Z+Lcd8U48bwzm4pMZ79qsedSXYwpwt6lJNtj/v5nKJYZZbw3yhaQPPgYePo3Y0NOCoYOq/jcsisuw==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-scripts@3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.4.1.tgz#f551298b5c71985cc491b9acf3c8e8c0ae3ada0a"
@@ -8872,11 +8879,6 @@ react-scripts@3.4.1:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.1.2"
-
-react-scroll-to@^3.0.0-beta.6:
-  version "3.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/react-scroll-to/-/react-scroll-to-3.0.0-beta.6.tgz#c7f6ff00247e1ee78659f04637a9993b1222735e"
-  integrity sha512-uAx77bPqqYL7UIga0d+tcVXHpVmBzmBUGuy1AaiRUgNC7InzE/4qNxg0d4cxhlCh8ok6zBCQ82LzzmTcYIte/w==
 
 react@^16.13.1:
   version "16.13.1"

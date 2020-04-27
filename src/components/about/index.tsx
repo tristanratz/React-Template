@@ -2,6 +2,8 @@ import React, {RefObject} from 'react';
 import "./style.scss";
 import {Icons} from "../Icons";
 import classNames from "classnames";
+import Fade from 'react-reveal/Fade';
+
 import {
     IoMdPin,
     IoMdFlask,
@@ -44,6 +46,7 @@ export class About extends React.Component<Props, State> {
         };
 
         this.handleResize = this.handleResize.bind(this);
+        this.updateStyles = this.updateStyles.bind(this);
         window.addEventListener('resize', this.handleResize);
     }
 
@@ -66,6 +69,10 @@ export class About extends React.Component<Props, State> {
                 });
             }
         }
+        this.updateStyles()
+    }
+
+    updateStyles() {
         const textHeight = (this.textWrapper.current) ? this.textWrapper.current!.getBoundingClientRect().height : -1;
         this.setState({
             imageStyle: {
@@ -120,6 +127,7 @@ export class About extends React.Component<Props, State> {
             width: this.wrappingElement.current!.offsetWidth,
             height: this.wrappingElement.current!.offsetHeight
         })
+        this.updateStyles();
     }
 
     componentDidMount(): void {
@@ -133,12 +141,16 @@ export class About extends React.Component<Props, State> {
             <div className="about" id="about" onMouseMove={this.mouseMoved.bind(this)}>
                     <h1>About</h1>
                 <div className="contentWrapper" ref={this.wrappingElement}>
-                    <div className="left">
-                        <div ref={this.imageElement} className="image" style={imageStyle} />
-                    </div>
+                    <Fade left>
+                        <div className="left">
+                            <div ref={this.imageElement} className="image" style={imageStyle} />
+                        </div>
+                    </Fade>
                     <div className="right" ref={this.textWrapper}>
                         <div className="wrapper">
-                            {this.retrieveContent()}
+                            <Fade cascade >
+                                {this.retrieveContent()}
+                            </Fade>
                         </div>
                     </div>
                 </div>
