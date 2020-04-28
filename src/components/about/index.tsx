@@ -69,25 +69,36 @@ export class About extends React.Component<Props, State> {
                 });
             }
         }
-        this.updateStyles()
+        this.updateStyles();
     }
 
     updateStyles() {
         const textHeight = (this.textWrapper.current) ? this.textWrapper.current!.getBoundingClientRect().height : -1;
+        const textWidth = (this.textWrapper.current) ? this.textWrapper.current!.getBoundingClientRect().width : -1;
+        console.log(textHeight)
+        const imageHeight = (this.state.wrap === 1) ? `${textHeight*0.9}px` : `${textWidth*(1/0.75)}px`;
+        const imageWidth = (this.state.wrap === 0) ? `${textWidth*0.9}px` : `${textWidth}px`;
+        console.log(imageHeight)
+
+        console.log((this.state.positionX - this.state.width/2)/128 +
+            (this.state.wrap*(window.innerWidth)/32))
+
+        const imageStyle = {
+            //backgroundPositionX: ((-this.state.positionX - this.state.width)/16 - this.state.width/5),
+            //backgroundPositionY: ((-this.state.positionY - this.state.height)/16),
+            height: imageHeight,
+            width: imageWidth,
+            margin: (this.state.wrap === 1) ? "0 0 auto" : "0 auto auto",
+            float: (this.state.wrap === 1) ? "right" : "unset",
+            transform: "translate3d(" + ((this.state.positionX - this.state.width/2)/128 +
+            this.state.wrap*(window.innerWidth)/32) + "px, " +
+            ((this.state.positionY - this.state.height/2)/128 +
+            (1-this.state.wrap)*(window.innerHeight)/32)
+            + "px, 0)"
+        } as React.CSSProperties
+
         this.setState({
-            imageStyle: {
-                //backgroundPositionX: ((-this.state.positionX - this.state.width)/16 - this.state.width/5),
-                //backgroundPositionY: ((-this.state.positionY - this.state.height)/16),
-                height: (textHeight > 0) ? `${textHeight*0.9}px` : "50vh",
-                width: textHeight*0.75,
-                margin: (this.state.wrap === 1) ? "0 0 auto" : "0 auto auto",
-                float: (this.state.wrap === 1) ? "right" : "unset",
-                transform: "translate3d(" + ((this.state.positionX - this.state.width/2)/128 +
-                    this.state.wrap*(window.innerWidth)/32) + "px, " +
-                    ((this.state.positionY - this.state.height/2)/128 +
-                        (1-this.state.wrap)*(window.innerHeight)/32)
-                    + "px, 0)"
-            }
+            imageStyle: imageStyle
         })
     }
 
@@ -99,16 +110,17 @@ export class About extends React.Component<Props, State> {
 
                 <label>About</label>
                 <p>
-                    Tristan is currently studying business informatics at the technical university of Darmstadt.
-                    Beneath his great excitment in informatics Tristan is very interested in Cloud Computing and
+                    I am currently studying business informatics at the technical university of Darmstadt.
+                    Beneath my great excitment in informatics I am very interested in Cloud Computing and
                     the current developments in Artificial Intelligence and natural language processing.
                     <br/><br/>
-                    At the moment Tristan is employed as a working student at Finanz Informatik Solutions Plus GmbH
+                    At the moment I am is employed as a working student at Finanz Informatik Solutions Plus GmbH,
                     which is a direct subsidiary of the information systems service provider of one of Germany's
                     leading financial institutes.
                     <br/><br/>
-                    Tristan is ambitious, curious, a fast learner and a team player, which makes him, besides his
-                    knowledge a perfect fit for almost all projects.
+                    I am ambitious, curious, a fast learner and a team player, which makes me, besides my
+                    knowledge a perfect fit for almost all projects.<br/>
+                    Do not hesitate to contact me.
                 </p>
                 <label>Mail</label>
                 <p>
@@ -131,7 +143,19 @@ export class About extends React.Component<Props, State> {
     }
 
     componentDidMount(): void {
+        console.log(this.state);
         this.handleResize();
+    }
+
+    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+        if (this.state.wrap !== prevState.wrap) {
+            this.handleResize();
+        }
+    }
+
+    shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<State>, nextContext: any): boolean {
+        console.log(nextState);
+        return !(!!this.state.imageStyle.width) || nextState !== this.state || nextProps !== this.props
     }
 
     render(): React.ReactElement {
@@ -146,6 +170,7 @@ export class About extends React.Component<Props, State> {
                             <div ref={this.imageElement} className="image" style={imageStyle} />
                         </div>
                     </Fade>
+                    <div className="right" ref={this.textWrapper}>
                     <div className="right" ref={this.textWrapper}>
                         <div className="wrapper">
                             <Fade cascade >

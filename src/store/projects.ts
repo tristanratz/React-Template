@@ -59,7 +59,7 @@ export const projects:ProjectData[] = [
         name: "Website",
         technologies: ["PHP", "HTML", "CSS", "MySQL", "Python", "Twisted"],
         description: "Besides creating a website with my own CMS, I also created a corperate identity for the medical office.",
-        text: "The website (link below) was build on top of my previous project (CMS) and operates with it as of today." +
+        text: "The website (link below) was build on top of my previous project (CMS) and operates with it until today." +
             "I also created the design for flyers, business cards and signs in the building.",
         language: "en",
         image: "none",
@@ -70,7 +70,7 @@ export const projects:ProjectData[] = [
         name: "Content Management System",
         technologies: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
         description: "A content management system, build using PHP, MySQL, HTML and JavaScript. " +
-            "As of today it is still in use.",
+            "Until today it is still in use.",
         text: "During my time at school i wanted to build my own content management system. " +
             "Not only because I disliked existing solutions and found them to difficult to use, but also to gain experience in some web technologies." +
             "I gained experience in PHP, HTML and CSS and build my first object oriented JavaScript-Image Picker using " +
