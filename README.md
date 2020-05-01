@@ -9,6 +9,8 @@ For using it, it takes two simple steps:
 - and making entries for your projects in `src/rsc/projects.json`
 
 __Please make sure to keep the "Template by Tristan Ratz" disclaimer on your site.__
+
+You can find a demo of this repo [here](https://www.tristanratz.com)
 Thank you and happy coding.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
