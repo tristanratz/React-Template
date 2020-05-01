@@ -8,7 +8,7 @@ For using it, it takes two simple steps:
 - Putting your personal data in `scr/store/person.tsx` 
 - and making entries for your projects in `src/rsc/projects.json`
 
-** Please make sure to keep the "Template by Tristan Ratz" disclaimer on your site. **
+__Please make sure to keep the "Template by Tristan Ratz" disclaimer on your site.__
 Thank you and happy coding.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
