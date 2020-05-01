@@ -15,7 +15,7 @@ import {person} from "../../store/person";
 
 
 export class Icons extends React.Component {
-    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+    render(): React.ReactElement {
         return (
             <div>
                 {(person.linkedin) ? <a href={person.linkedin}><IoLogoLinkedin/></a> : null}

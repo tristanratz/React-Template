@@ -17,6 +17,7 @@ interface Props {}
 export class Intro extends React.Component<Props, State> {
 
     wrappingElement: RefObject<HTMLDivElement>;
+    effectElement: RefObject<HTMLDivElement>;
     fName: RefObject<HTMLDivElement>;
     lName: RefObject<HTMLDivElement>;
     nextSection: HTMLElement | null;
@@ -24,6 +25,7 @@ export class Intro extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.wrappingElement = React.createRef();
+        this.effectElement = React.createRef();
         this.fName = React.createRef();
         this.lName = React.createRef();
         this.nextSection = null;
@@ -34,7 +36,6 @@ export class Intro extends React.Component<Props, State> {
             width: 0,
             height: 0,
         };
-
     }
 
     componentDidMount(): void {
@@ -42,7 +43,10 @@ export class Intro extends React.Component<Props, State> {
             width: this.wrappingElement.current!.offsetWidth,
             height: this.wrappingElement.current!.offsetHeight
         })
-        this.nextSection = document.getElementById("about")
+        this.nextSection = document.getElementById("about");
+        this.effectElement.current!.addEventListener('touchend', event => {
+            event.stopPropagation();
+        });
     }
 
     mouseMoved(e: React.MouseEvent): void {
@@ -67,7 +71,6 @@ export class Intro extends React.Component<Props, State> {
             zIndex: 2,
         };
 
-        const lNameHeight = (this.lName.current) ? this.lName.current!.offsetHeight : 0;
         const lNameWidth = (this.lName.current) ? this.lName.current!.offsetWidth : 0;
 
         const lnameStyle = {
@@ -79,8 +82,11 @@ export class Intro extends React.Component<Props, State> {
         };
 
         return (
-            <div ref={this.wrappingElement} className="intro" id="intro" onMouseMove={this.mouseMoved.bind(this)}>
-                <div className="effectWrapper">
+            <div ref={this.wrappingElement}
+                 className="intro" id="intro"
+                 onMouseMove={this.mouseMoved.bind(this)}>
+                <div className="effectWrapper"
+                     ref={this.effectElement}>
                     <div ref={this.fName} className="effect" style={fnameStyle}>TRISTAN</div>
                     <div ref={this.lName} className="effect" style={lnameStyle}>RATZ</div>
                 </div>

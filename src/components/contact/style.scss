@@ -22,6 +22,8 @@
 
     .imprint {
       margin-top: 100px;
+      transition: opacity 0.2s;
+      cursor: pointer;
 
       &:hover {
         opacity: 0.5;
@@ -34,6 +36,15 @@
       font-size: 0.8rem;
       font-weight: bolder;
       color: rgba(255, 255, 255, 0.5);
+
+      a:link, a:hover, a:visited {
+        margin: inherit;
+        text-transform: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        text-decoration: none;
+      }
     }
 
     p, a {

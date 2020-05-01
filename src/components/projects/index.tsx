@@ -3,6 +3,7 @@ import "./style.scss";
 import {getProjects} from "../../store/projects";
 import {Project} from "./project";
 import {ProjectNavigation} from "./projectNavigation";
+import {Swipeable} from "react-swipeable";
 
 interface State {
     openElement: number; // With content teext beeing shown. Must be -1 or activeElement
@@ -25,6 +26,7 @@ export class Projects extends React.Component<Props, State> {
         }
 
         this.handleClickEvent = this.handleClickEvent.bind(this);
+        this.handleSwipeEvent = this.handleSwipeEvent.bind(this);
     }
 
     handleOpenEvent(i: number, open: boolean) {
@@ -51,7 +53,25 @@ export class Projects extends React.Component<Props, State> {
             case "click":
                 return () => {};
         }
+    }
 
+    handleSwipeEvent(direction: "left" | "right") {
+        const max = getProjects().length-1;
+        const active = this.state.activeElement;
+        switch (direction) {
+            case "left":
+                this.setState({
+                    openElement: -1,
+                    activeElement: (active === max) ? 0 : active+1,
+                });
+                break;
+            case "right":
+                this.setState({
+                    openElement: -1,
+                    activeElement: (active !== 0) ? active-1 : max,
+                });
+                break;
+        }
     }
 
     render(): React.ReactElement {
@@ -63,6 +83,9 @@ export class Projects extends React.Component<Props, State> {
 
         return (
         <div className="projects"  id="projects">
+            <Swipeable
+                onSwipedLeft={() => this.handleSwipeEvent("left")}
+                onSwipedRight={() => this.handleSwipeEvent("right")}>
             <div className="contentWrapper">
                 <h1>Projects</h1>
                 <div className="projectsWindow">
@@ -79,6 +102,7 @@ export class Projects extends React.Component<Props, State> {
                 <ProjectNavigation projects={projects} active={this.state.activeElement} onClick={this.handleClickEvent} />
 
             </div>
+            </Swipeable>
         </div>);
     }
 }
