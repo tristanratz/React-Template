@@ -3,8 +3,23 @@ import "./style.scss"
 import {Icons} from "../Icons";
 import Fade from "react-reveal/Fade";
 import {person} from "../../store/person";
+import Imprint from "../imprint";
+import retrieveImprint from "../../store/imprint";
 
-export class Contact extends React.Component {
+interface Props {}
+interface State {
+    showImprint: boolean;
+}
+
+export class Contact extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            showImprint: false
+        }
+    }
+
     render(): React.ReactElement {
         return (
             <div className="contact"  id="contact">
@@ -26,10 +41,12 @@ export class Contact extends React.Component {
                         <label>Links</label>
                         <p><Icons /></p>
 
-                        <p className="imprint"
-                           onClick={() => alert("Here goes imprint")}>
-                            Impring & Privacy
-                        </p>
+                        {retrieveImprint() &&
+                            <p className="imprint"
+                               onClick={() => this.setState({showImprint: true})}>
+                                Impring & Privacy
+                            </p>
+                        }
 
                         <label>
                             <a href="tristanratz.com">
@@ -38,6 +55,10 @@ export class Contact extends React.Component {
                         </label>
                     </div>
                 </Fade>
+                {retrieveImprint() &&
+                    <Imprint visible={this.state.showImprint}
+                             onClick={() => this.setState({showImprint: false})}/>
+                }
             </div>);
     }
 }

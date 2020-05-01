@@ -2,7 +2,7 @@ $accentColor: #eee !default;
 
 body {
   margin: 0;
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Montserrat, "montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -20,6 +20,12 @@ code {
 
 h1, h2, h3 {
   text-transform: uppercase;
+}
+
+h1 {
+  font-family: "montserratblack", Montserrat, "montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;;
 }
 
 a {

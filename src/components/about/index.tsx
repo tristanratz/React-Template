@@ -3,7 +3,7 @@ import "./style.scss";
 import {Icons} from "../Icons";
 import Fade from "react-reveal/Fade";
 import {person} from "../../store/person";
-import AboutCards from "./aboutCards";
+import Aboutcards from "./aboutcards";
 
 interface Props {}
 
@@ -158,7 +158,7 @@ export class About extends React.Component<Props, State> {
                         </div>
                     </div>
                 </div>
-                <AboutCards />
+                <Aboutcards />
             </div>
         );
     }

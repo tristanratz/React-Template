@@ -11,12 +11,14 @@ import {
 } from "react-icons/ai"
 import {person} from "../../store/person";
 import React from "react";
+import Fade from "react-reveal/Fade"
+import {Card} from "./card";
 
 interface Props {}
 
-export const AboutCards = (props: Props) => (
+export const Aboutcards = (props: Props) => (
     <div className={classNames({"contentWrapper":true, "aboutCards":true})}>
-        <div>
+        <Card>
             <IoMdPin />
             <label>Based in</label>
             <p>
@@ -24,8 +26,8 @@ export const AboutCards = (props: Props) => (
                 {person.state}, <br/>
                 {person.country}
             </p>
-        </div>
-        <div>
+        </Card>
+        <Card>
             <IoMdHammer />
             <label>Preferred ides</label>
             <p>
@@ -34,8 +36,8 @@ export const AboutCards = (props: Props) => (
                     return (<text>{ide}{(!last) ? (<text>, </text>) : null}</text>)
                 })}
             </p>
-        </div>
-        <div>
+        </Card>
+        <Card>
             <IoMdHeart />
             <label>Interests</label>
             <p>
@@ -44,8 +46,8 @@ export const AboutCards = (props: Props) => (
                     return (<text>{interest}{(!last) ? (<text>, <br /></text>) : null}</text>)
                 })}
             </p>
-        </div>
-        <div>
+        </Card>
+        <Card>
             <AiFillCode />
             <label>Technologies</label>
             <p>
@@ -54,8 +56,8 @@ export const AboutCards = (props: Props) => (
                     return (<text>{tec}{(!last) ? (<text>, </text>) : null}</text>)
                 })}
             </p>
-        </div>
-        <div>
+        </Card>
+        <Card>
             <IoMdDesktop />
             <label>Operating systems</label>
             <p>
@@ -64,8 +66,8 @@ export const AboutCards = (props: Props) => (
                     return (<text>{os}{(!last) ? (<text>, </text>) : null}</text>)
                 })}
             </p>
-        </div>
-        <div>
+        </Card>
+        <Card>
             <IoMdSave />
             <label>Programs</label>
             <p>
@@ -74,8 +76,8 @@ export const AboutCards = (props: Props) => (
                     return (<text>{program}{(!last) ? (<text>, </text>) : null}</text>)
                 })}
             </p>
-        </div>
+        </Card>
     </div>
 );
 
-export default AboutCards;
+export default Aboutcards;
