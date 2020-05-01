@@ -1,17 +1,9 @@
 import React, {RefObject} from 'react';
 import "./style.scss";
 import {Icons} from "../Icons";
-import classNames from "classnames";
-import Fade from 'react-reveal/Fade';
-
-import {
-    IoMdPin,
-    IoMdFlask,
-    IoMdHammer,
-    IoMdSave,
-    IoMdDesktop,
-    IoMdHeart
-} from "react-icons/io"
+import Fade from "react-reveal/Fade";
+import {person} from "../../store/person";
+import AboutCards from "./aboutCards";
 
 interface Props {}
 
@@ -106,36 +98,6 @@ export class About extends React.Component<Props, State> {
         }
     }
 
-    retrieveContent() : React.ReactElement {
-        return (
-            <div>
-                <label>Name</label>
-                <p>Tristan Ratz</p>
-
-                <label>About</label>
-                <p>
-                    I am currently studying business informatics at the technical university of Darmstadt.
-                    Beneath my great excitment in informatics I am very interested in Cloud Computing and
-                    the current developments in Artificial Intelligence and natural language processing.
-                    <br/><br/>
-                    At the moment I am is employed as a working student at Finanz Informatik Solutions Plus GmbH,
-                    which is a direct subsidiary of the information systems service provider of one of Germany's
-                    leading financial institutes.
-                    <br/><br/>
-                    I am ambitious, curious, a fast learner and a team player, which makes me, besides my
-                    knowledge a perfect fit for almost all projects.<br/>
-                    Do not hesitate to contact me.
-                </p>
-                <label>Mail</label>
-                <p>
-                    <a className="contact" href="mailto:mail@tristanratz.com">mail@tristanratz.com</a>
-                </p>
-                <label>Links</label>
-                <p><Icons /></p>
-            </div>
-        );
-    }
-
     mouseMoved(e: React.MouseEvent): void {
         this.handleResize();
     }
@@ -158,7 +120,7 @@ export class About extends React.Component<Props, State> {
 
         return (
             <div className="about" id="about" onMouseMove={this.mouseMoved.bind(this)}>
-                    <h1>About</h1>
+                <h1>About</h1>
                 <div className="contentWrapper" ref={this.wrappingElement}>
                     <Fade left>
                         <div className="left">
@@ -172,67 +134,31 @@ export class About extends React.Component<Props, State> {
                             this.textWidth = (e) ? e.offsetWidth : 0;
                         }
                         }>
-                            <Fade cascade >
-                                {this.retrieveContent()}
+                            <Fade cascade right>
+                                <div>
+                                    <label>Name</label>
+                                    <p>{person.firstName} {person.lastName}</p>
+
+                                    <label>About</label>
+                                    <p>
+                                        {person.about.map((paragraph) => (
+                                            <p>
+                                                {paragraph}
+                                            </p>
+                                        ))}
+                                    </p>
+                                    <label>Mail</label>
+                                    <p>
+                                        <a className="contact" href={"mailto:" +person.email}>{person.email}</a>
+                                    </p>
+                                    <label>Links</label>
+                                    <p><Icons /></p>
+                                </div>
                             </Fade>
                         </div>
                     </div>
                 </div>
-                <div className={classNames({"contentWrapper":true, "aboutCards":true})}>
-                    <div>
-                        <IoMdPin />
-                        <label>Based in</label>
-                        <p>
-                            <strong>Darmstadt</strong> near Frankfurt, <br/>
-                            Hesse, <br/>
-                            Germany
-                        </p>
-                    </div>
-                    <div>
-                        <IoMdHammer />
-                        <label>Preferred ides</label>
-                        <p>
-                            IntelliJ, PyCharm, WebStorm
-                        </p>
-                    </div>
-                    <div>
-                        <IoMdHeart />
-                        <label>Interests</label>
-                        <p>
-                            Machine Learning <br/>
-                            Natural Language Processing, <br/>
-                            Artificial Intelligence, <br/>
-                        </p>
-                    </div>
-                    <div>
-                        <IoMdFlask />
-                        <label>Technologies</label>
-                        <p>
-                            Python, git,
-                            Tensorflow, PyTorch,
-                            Java,
-                            HTML, CSS,
-                            JavaScript, React, Redux, <br />
-                            Amazon Web Services, Google Cloud
-                            <br />
-                        </p>
-                    </div>
-                    <div>
-                        <IoMdDesktop />
-                        <label>Operating systems</label>
-                        <p>
-                            macOS, Linux, Windows
-                        </p>
-                    </div>
-                    <div>
-                        <IoMdSave />
-                        <label>Programs</label>
-                        <p>
-                            MS Office,  Photoshop,
-                            Affinity Suite
-                        </p>
-                    </div>
-                </div>
+                <AboutCards />
             </div>
         );
     }

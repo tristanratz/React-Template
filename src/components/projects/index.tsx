@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.scss";
-import {projects} from "../../store/projects";
+import {getProjects} from "../../store/projects";
 import {Project} from "./project";
 import {ProjectNavigation} from "./projectNavigation";
 
@@ -55,6 +55,8 @@ export class Projects extends React.Component<Props, State> {
     }
 
     render(): React.ReactElement {
+        const projects = getProjects();
+
         const wrapperTransform = {
             'transform': `translateX(-${this.state.activeElement * (100 / projects.length)}%)`
         }

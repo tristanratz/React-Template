@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss"
 import {Icons} from "../Icons";
 import Fade from "react-reveal/Fade";
+import {person} from "../../store/person";
 
 export class Contact extends React.Component {
     render(): React.ReactElement {
@@ -15,12 +16,12 @@ export class Contact extends React.Component {
                         </p>
                         <p>
                             <label>Mail</label>
-                            <a className="contact" href="mailto:mail@tristanratz.com">mail@tristanratz.com</a>
+                            <a className="contact" href={"mailto:" + person.email}>{person.email}</a>
                         </p>
 
                         <p>
                             <label>Area</label>
-                            Darmstadt, Germany
+                            {person.city}, {person.country}
                         </p>
                         <label>Links</label>
                         <p><Icons /></p>
@@ -31,7 +32,9 @@ export class Contact extends React.Component {
                         </p>
 
                         <label>
-                            © by Tristan Ratz
+                            <a href="tristanratz.com">
+                                © by Tristan Ratz
+                            </a>
                         </label>
                     </div>
                 </Fade>

@@ -2,20 +2,28 @@ import React from "react";
 import {
     IoLogoLinkedin,
     IoLogoInstagram,
-    IoIosMail,
-    IoLogoGithub
+    IoMdMail,
+    IoLogoGithub,
+    IoLogoXing,
+
 } from "react-icons/io"
+import {
+    AiFillMediumSquare
+} from "react-icons/ai"
 import "./style.scss"
+import {person} from "../../store/person";
 
 
 export class Icons extends React.Component {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <div>
-                <a href="https://www.instagram.com/tristan.ratz/"><IoLogoInstagram/></a>
-                <a href="https://www.linkedin.com/in/tristan-ratz-a45680120"><IoLogoLinkedin/></a>
-                <a href="mailto:mail@tristanratz.com"><IoIosMail/></a>
-                <a href="https://github.com/tristanratz"><IoLogoGithub/></a>
+                {(person.linkedin) ? <a href={person.linkedin}><IoLogoLinkedin/></a> : null}
+                {(person.instagram) ? <a href={person.instagram}><IoLogoInstagram/></a> : null}
+                {(person.email) ? <a href={"mailto:" + person.email}><IoMdMail/></a> : null}
+                {(person.github) ? <a href={person.github}><IoLogoGithub/></a> : null}
+                {(person.xing) ? <a href={person.xing}><IoLogoXing/></a> : null}
+                {(person.medium) ? <a href={person.medium}><AiFillMediumSquare/></a> : null}
                 {/*<a>Medium</a>*/}
             </div>
         );
