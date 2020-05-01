@@ -70,11 +70,8 @@ export class About extends React.Component<Props, State> {
     updateStyles() {
         const textHeight = (this.textWrapper.current) ? this.textWrapper.current!.getBoundingClientRect().height : -1;
         const textWidth = (this.textWrapper.current) ? this.textWrapper.current!.getBoundingClientRect().width : -1;
-        console.log("textHeight", textHeight)
         const imageHeight = (this.state.wrap === 1) ? `${textHeight*0.9}px` : `${textWidth*(1/0.75)}px`;
         const imageWidth = (this.state.wrap === 0) ? `${textWidth*0.9}px` : `${textWidth}px`;
-        console.log("imageHeight", imageHeight)
-        console.log((this.state.wrap*(window.innerWidth)/32))
 
         const imageStyle = {
             height: imageHeight,
@@ -83,7 +80,8 @@ export class About extends React.Component<Props, State> {
             float: (this.state.wrap === 1) ? "right" : "unset",
             transform: "translate3d(" + (this.state.wrap*(window.innerWidth)/32) + "px, " +
             ((1-this.state.wrap)*(window.innerHeight)/32)
-            + "px, 0)"
+            + "px, 0)",
+            backgroundImage: "url(" + person.image + ")"
         } as React.CSSProperties
 
         if (this.state.imageStyle.height !== imageHeight || this.state.imageStyle.width !== imageWidth ||
@@ -107,7 +105,7 @@ export class About extends React.Component<Props, State> {
     }
 
     componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
-            this.handleResize();
+        this.handleResize();
     }
 
     shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<State>, nextContext: any): boolean {

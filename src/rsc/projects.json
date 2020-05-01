@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Example Homepage Project",
+    "technologies": ["React"],
+    "description": "Some description",
+    "text": ["Text paragraph"],
+    "language": "en",
+    "image": "none",
+    "date": "2020",
+    "github": "Git repo",
+    "link": "Some optional link"
+  }
+]

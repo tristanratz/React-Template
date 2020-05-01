@@ -4,6 +4,7 @@ import {Navigation} from "./Navigation";
 import {
     IoMdArrowDown
 } from "react-icons/io"
+import {person} from "../../store/person";
 
 interface State {
     positionX: number;
@@ -87,8 +88,8 @@ export class Intro extends React.Component<Props, State> {
                  onMouseMove={this.mouseMoved.bind(this)}>
                 <div className="effectWrapper"
                      ref={this.effectElement}>
-                    <div ref={this.fName} className="effect" style={fnameStyle}>TRISTAN</div>
-                    <div ref={this.lName} className="effect" style={lnameStyle}>RATZ</div>
+                    <div ref={this.fName} className="effect" style={fnameStyle}>{person.firstName.toUpperCase()}</div>
+                    <div ref={this.lName} className="effect" style={lnameStyle}>{person.lastName.toUpperCase()}</div>
                 </div>
                 <Navigation/>
                 <div className="downArrow"

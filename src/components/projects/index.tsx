@@ -100,7 +100,6 @@ export class Projects extends React.Component<Props, State> {
                     </div>
                 </div>
                 <ProjectNavigation projects={projects} active={this.state.activeElement} onClick={this.handleClickEvent} />
-
             </div>
             </Swipeable>
         </div>);

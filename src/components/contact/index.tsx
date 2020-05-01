@@ -49,8 +49,13 @@ export class Contact extends React.Component<Props, State> {
                         }
 
                         <label>
+                            <a href={person.website}>
+                                © by {person.firstName} {person.lastName}
+                            </a>
+                        </label>
+                        <label>
                             <a href="tristanratz.com">
-                                © by Tristan Ratz
+                                Template by Tristan Ratz
                             </a>
                         </label>
                     </div>
