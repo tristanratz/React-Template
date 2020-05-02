@@ -11,7 +11,6 @@ import {
 } from "react-icons/ai"
 import {person} from "../../store/person";
 import React from "react";
-import Fade from "react-reveal/Fade"
 import {Card} from "./card";
 
 interface Props {}

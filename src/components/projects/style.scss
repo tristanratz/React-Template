@@ -104,6 +104,7 @@
             .buttons {
               overflow: hidden;
               position: relative;
+              display: flex;
               transition: 0.5s;
               transition-delay: 0.2s;
 
@@ -124,10 +125,11 @@
               }
 
               a {
-                position: absolute;
-                font-size: 1.2em;
+                position: relative;
+                font-size: 1.0em;
                 box-sizing: content-box;
-                padding: 0.2rem;
+                padding: .3rem;
+                margin-right: 1rem;
               }
             }
           }
@@ -163,7 +165,7 @@
                 color: rgba(0,0,0, 0.5);
                 transition: color 0.2s;
                 padding: 10px 10px 10px 0;
-                display: block;
+                display: inline-block;
 
                 &:hover {
                   color: rgba(0,0,0, 1);
