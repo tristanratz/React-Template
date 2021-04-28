@@ -1,4 +1,4 @@
-import image from "../rsc/YOUR IMAGE.jpeg";
+import image from "../rsc/YOUR IMAGE.png";
 
 interface Person {
     firstName: string;
