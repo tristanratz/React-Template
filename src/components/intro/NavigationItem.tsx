@@ -25,6 +25,6 @@ export class NavigationItem extends React.Component<Props> {
     };
 
     render(): React.ReactElement| null | undefined {
-        return (<a onClick={this.handleClick}>{this.props.name}</a>);
+        return (<a href='/' onClick={this.handleClick}>{this.props.name}</a>);
     }
 }
